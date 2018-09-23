@@ -1,0 +1,19 @@
+{
+  "name": "180923vue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/songzxDev/180923vue.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/songzxDev/180923vue/issues"
+  },
+  "homepage": "https://github.com/songzxDev/180923vue#readme"
+}
