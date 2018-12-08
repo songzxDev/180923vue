@@ -3,61 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>vue-component学习</title>
+    <link rel="stylesheet" href="../plugins/iview/dist/styles/iview.css" type="text/css">
+
     <script type="application/javascript" src="../plugins/vue.min.js"></script>
+    <script type="application/javascript" src="../plugins/iview/dist/iview.min.js"></script>
+    <script src="../js/common/vcompbiz.js"></script>
+
+
 </head>
 <body>
 <div id="components-demo">
     <button-counter></button-counter>
-    <button-counter></button-counter>
-    <button-counter></button-counter>
-    <anchored-heading :level="1">Hello world!</anchored-heading>
 </div>
 <!---->
+<script src="../js/common/vcompbiz.js" type="application/javascript"></script>
 <script>
-    // 定义一个名为 button-counter 的新组件
-    Vue.component('button-counter', {
-        data: function () {
-            return {
-                count: 0
-            }
-        },
-        template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
-    });
-    let getChildrenTextContent = function (children) {
-        return children.map(function (node) {
-            return node.children
-                ? getChildrenTextContent(node.children)
-                : node.text
-        }).join('')
-    };
-
-    Vue.component('anchored-heading', {
-        render: function (createElement) {
-            // 创建 kebab-case 风格的ID
-            let headingId = getChildrenTextContent(this.$slots.default)
-                .toLowerCase()
-                .replace(/\W+/g, '-')
-                .replace(/(^\-|\-$)/g, '');
-
-            return createElement(
-                'h' + this.level,
-                [
-                    createElement('a', {
-                        attrs: {
-                            name: headingId,
-                            href: '#' + headingId
-                        }
-                    }, this.$slots.default)
-                ]
-            )
-        },
-        props: {
-            level: {
-                type: Number,
-                required: true
-            }
-        }
-    });
     new Vue({el: '#components-demo'});
 </script>
 </body>
