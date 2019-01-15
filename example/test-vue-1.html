@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test-Vue-1</title>
+    <link rel="stylesheet" href="../plugins/iview/dist/styles/iview.css" type="text/css">
+    <style type="text/css" rel="stylesheet">
+        .demo-split {
+            height: 500px;
+            border: 1px solid #dcdee2;
+        }
+
+        .demo-split-pane {
+            padding: 10px;
+        }
+    </style>
+    <script type="application/javascript" src="../plugins/vue.min.js"></script>
+    <script type="application/javascript" src="../plugins/iview/dist/iview.min.js"></script>
+</head>
+<body>
+<div id="test-vue-1">
+
+</div>
+
+<div id="test-vue-2">
+
+</div>
+<br><br><br>
+
+<div id="test-vue-3">
+    <div id="test-vue-child-3-0">
+
+    </div>
+    <div id="test-vue-child-3-1">
+
+    </div>
+</div>
+
+<script type="application/javascript" charset="UTF-8">
+    // 创建构造器
+    let Profile = Vue.extend({
+        template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>',
+        data: function () {
+            return {
+                firstName: 'Walter',
+                lastName: 'White',
+                alias: 'Heisenberg'
+            }
+        }
+    });
+
+    let profile = new Profile();
+
+    profile.firstName = "白日依山尽，黄河入海流";
+    profile.lastName = "日穷千里目，更上一层楼";
+    profile.$mount('#test-vue-1');
+
+    setTimeout(() => {
+        profile.lastName = "骑驴过小桥，独叹梅花瘦";
+    }, 2000);
+    new Profile().$mount('#test-vue-2');
+
+    let profile2 = new Profile().$mount();
+    setTimeout(() => {
+        profile2.lastName = "骑驴过小桥，独叹梅花瘦";
+    }, 10000);
+    document.getElementById('test-vue-3').appendChild(profile2.$el);
+
+    let profile3 = new Profile().$mount();
+    document.getElementById('test-vue-child-3-0').appendChild(profile3.$el);
+
+    setTimeout(() => {
+        profile3.lastName = "众里寻他千百度，蓦然回首，那人却在灯火阑珊处";
+    }, 10000);
+
+    let Split = Vue.extend({
+        template: `<div class="demo-split">
+                        <Split v-model="split1">
+                            <div slot="left" class="demo-split-pane">
+                                Left Pane
+                            </div>
+                            <div slot="right" class="demo-split-pane">
+                                <div id="children"></div>
+                            </div>
+                        </Split>
+                    </div>`,
+        data: function () {
+            return {
+                split1: 0.5
+            }
+        }
+    });
+
+    let split1 = new Split().$mount();
+    document.getElementById('test-vue-child-3-1').appendChild(split1.$el);
+
+    let Cell = Vue.extend({
+        template: `<div style="padding: 10px;background: #f8f8f9">
+                        <Card title="Options" icon="ios-options" :padding="0" shadow style="width: 300px;">
+                            <cell-group>
+                                <Cell title="Only show titles" />
+                                <Cell title="Display label content" label="label content" />
+                                <Cell title="Display right content" extra="details" />
+                                <Cell title="Link" extra="details" to="/components/button" />
+                                <Cell title="Open link in new window" to="/components/button" target="_blank" />
+                                <Cell title="Disabled" disabled />
+                                <Cell title="Selected" selected />
+                                <Cell title="With Badge" to="/components/badge">
+                                    <Badge :count="10" slot="extra" />
+                                </Cell>
+                                <Cell title="With Switch">
+                                    <i-switch v-model="switchValue" slot="extra" />
+                                </Cell>
+                            </cell-group>
+                        </Card>
+                    </div>`,
+        data: function () {
+            return {
+                switchValue: true
+            }
+        }
+    });
+
+    let cell1 = new Cell().$mount();
+    document.getElementById('children').appendChild(cell1.$el);
+    setTimeout(() => {
+        cell1.switchValue = false;
+    }, 3000);
+
+</script>
+</body>
+</html>
