@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3 form</title>
+    <style type="text/css">
+        html, body, h1, form, fieldset, legend, ol, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #ffffff;
+            color: #111111;
+            font-family: Georgia, "Times New Roman", Times, Serif;
+            padding: 20px;
+        }
+
+        form#payment {
+            background: #9cbc2c;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            padding: 20px;
+            width: 400px;
+        }
+
+        form#payment fieldset {
+            border: none;
+            margin-bottom: 10px;
+        }
+
+        form#payment fieldset:last-of-type {
+            margin-bottom: 0;
+        }
+
+        form#payment legend {
+            color: #384313;
+            font-size: 16px;
+            font-weight: bold;
+            padding-bottom: 10px;
+            text-shadow: 0 1px 1px #c0d576;
+        }
+
+        form#payment > fieldset > legend:before {
+            content: "Step" counter(fieldsets) ":";
+            counter-increment: fieldsets;
+        }
+
+        form#payment fieldset fieldset legend {
+            color: #111111;
+            font-size: 13px;
+            font-weight: normal;
+            padding-bottom: 0;
+        }
+
+        form#payment ol li {
+            background: #b9cf6a;
+            background: rgba(255, 255, 255, 3);
+            border-color: #e3ebc3;
+            border-color: rgba(255, 255, 255, 6);
+            border-style: solid;
+            border-width: 2px;
+            -webkit-border-radius: 5px;
+            line-height: 30px;
+            list-style: none;
+            padding: 5px 10px;
+            margin-bottom: 2px;
+        }
+
+        form#payment ol ol li {
+            background: none;
+            border: none;
+            float: left;
+        }
+
+        form#payment label {
+            float: left;
+            font-size: 13px;
+            width: 110px;
+        }
+
+        form#payment fieldset fieldset label {
+            background: none no-repeat left 50px;
+            line-height: 20px;
+            padding: 0 0 0 30px;
+            width: auto;
+        }
+
+        form#payment fieldset fieldset label:hover {
+            cursor: pointer;
+        }
+
+        form#payment input:not([type=radio]), form#payment textarea {
+            background: #ffffff;
+            border: #FC3 solid 1px;
+            -webkit-border-radius: 3px;
+            font: italic 13px Georgia, "Times New Roman", Times, Serif;
+            outline: none;
+            padding: 5px;
+            width: 200px;
+        }
+
+        form#payment input:not([type=submit]):focus, form#payment textarea:focus {
+            background: #eaeaea;
+            border: #F00 solid 1px;
+        }
+
+        form#payment input[type=radio] {
+            float: left;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<form action="" id="payment">
+    <fieldset>
+        <legend>用户详细资料</legend>
+        <ol>
+            <li>
+                <label for="name">用户名称：</label>
+                <input type="text" id="name" name="name" placeholder="请输入用户名" required autofocus>
+            </li>
+            <li>
+                <label for="email">邮件地址：</label>
+                <input type="email" id="email" name="email" placeholder="example@163.com" required>
+            </li>
+            <li>
+                <label for="phone">联系电话：</label>
+                <input type="tel" id="phone" name="phone" placeholder="010-12345678" required>
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset>
+        <legend>家庭住址（收货地址）：</legend>
+        <ol>
+            <li>
+                <label for="address">详细地址：</label>
+                <textarea name="address" id="address" cols="30" rows="1" required></textarea>
+            </li>
+            <li>
+                <label for="postcode">邮政编码：</label>
+                <input type="text" id="postcode" name="postcode" required>
+            </li>
+            <li>
+                <label for="country">国&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;家：</label>
+                <input type="text" id="country" name="country" required>
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset>
+        <legend>付费方式</legend>
+        <ol>
+            <li>
+                <fieldset>
+                    <ol>
+                        <li>
+                            <input type="radio" id="visa" name="cardtype">
+                            <label for="visa">中国工商银行</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="amex" name="cardtype">
+                            <label for="amex">中国人民银行</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="mastercard" name="cardtype">
+                            <label for="mastercard">中国建设银行</label>
+                        </li>
+                    </ol>
+                </fieldset>
+            </li>
+            <li>
+                <label for="cardnumber">银行卡号：</label>
+                <input type="number" id="cardnumber" name="cardnumber" required>
+            </li>
+            <li>
+                <label for="secure">验&nbsp;&nbsp;证&nbsp;&nbsp;码：</label>
+                <input type="number" id="secure" name="secure" required>
+            </li>
+            <li>
+                <label for="namecard">持&nbsp;&nbsp;卡&nbsp;&nbsp;人：</label>
+                <input type="text" placeholder="确定是否为该卡用户" required id="namecard" name="namecard">
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset>
+        <button type="submit">现在购买</button>
+    </fieldset>
+</form>
+</body>
+</html>
